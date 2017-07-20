@@ -1,26 +1,14 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-
-//  $("#main").append("Alex Gross");
-//
-// var awesomeThoughts = "I am Alex and I am awesome!"
-// console.log(awesomeThoughts);
-//
-// var funThoughts = awesomeThoughts.replace("awesome", "fun");
-//
-// $("#main").append(funThoughts);
-
 var bio = {
   name: "Alex Gross",
   role: "Front-End Developer",
   contacts: {
+    mobile: "123456789",
     email: "gross.alex@me.com",
     github: "alexandergross",
     twitter: "@_alexgross",
     location: "Wels | Austria"
   },
-  pictureURL: "images/me.jpg",
+  biopic: "images/me.jpg",
   welcomeMessage: "Welcome to my Udacity Resume",
   skills: [
     "JavaScript", "CSS", "HTML", "Gulp", "Grunt"
@@ -28,42 +16,71 @@ var bio = {
 };
 
 var work = {
-  position: "Front-End Developer",
-  employer: "E-CONOMIX GmbH",
-  years: 1,
-  city: "Wels | Austria"
+  jobs: [
+    {
+      employer: "E-CONOMIX GmbH",
+      title: "Front-End Developer",
+      location: "Wels | Austria",
+      dates: "2016 - ",
+      description: ""
+    }
+  ]
 };
 
-var eductation = {
-  name: "University of Applied Sciences Hagenberg",
-  years: 1,
-  city: "Hagenberg | Austria"
+var education = {
+  "schools": [
+    {
+      "name": "EM Marketing & Design",
+      "location": "St. Valentin",
+      "majors": ["UI Design", "Marketing", "3D Animation"],
+      "degree": "Diplom",
+      "dates": "2004 - 2005",
+      "url": ""
+    },
+    {
+      "name": "Berufsschule Linz 9",
+      "location": "Linz",
+      "majors": ["Mediadesign", "Web-Design", "UI-Design", "Print-Design", "Web-Development", "Video Editing", "3D Animation"],
+      "degree": "Lehrabschluss",
+      "dates": "2004 - 2007",
+      "url": ""
+    },
+    {
+      "name": "University of Applied Science",
+      "location": "Wels",
+      "majors": ["Mathematics", "Englisch", "German", "Physics"],
+      "degree": "Studienbefähigung",
+      "dates": "2011 - 2012",
+      "url": ""
+    },
+    {
+      "name": "University of Applied Science",
+      "location": "Hagenberg",
+      "majors": ["Mobile Computing", "Java Development", "Android Development", "Project Management", "Network Technology", "Mathematics"],
+      "degree": "Studienbefähigung",
+      "dates": "2012 - 2013",
+      "url": ""
+    }
+  ],
+  "onlineCourses": [
+    {
+      "title": "Udacity Front-End Nanodegree",
+      "school": "Udacity",
+      "dates": "2016 - 2017",
+      "url": "www.Udacity.com"
+    }
+  ]
 };
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formatedHTMLbioPic = HTMLbioPic.replace("%data%", bio.pictureURL);
-var formatedHTMLemail = HTMLemail.replace("%data%", bio.contacts.email);
-var formatedHTMLtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-var formatedHTMLgithub = HTMLgithub.replace("%data%", bio.contacts.github);
-var formatedHTMLlocation = HTMLlocation.replace("%data%", bio.contacts.location);
-var formatedHTMLwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-var formatedHTMLschoolName = HTMLschoolName.replace("%data%", eductation.name);
-
-$("#header").prepend(HTMLskillsStart);
-$("#header").prepend(formatedHTMLwelcomeMsg);
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#header").prepend(formatedHTMLbioPic);
-$("#topContacts").append(formatedHTMLemail);
-$("#topContacts").append(formatedHTMLtwitter);
-$("#topContacts").append(formatedHTMLgithub);
-$("#topContacts").append(formatedHTMLlocation);
-$("#main").append(work["position"]);
-$("#main").append(eductation.name);
-
-for(var i = 0; i < bio.skills.length; i++) {
-  var skill = bio.skills[i];
-  var formatedHTMLskills = HTMLskills.replace("%data%", skill);
-  $("#skills").append(formatedHTMLskills);
+var pojects = {
+  projects: [
+    {
+      title: "Portfolio",
+      dates: "2017",
+      description: "A Portfolio Project for the Udacity Nanodegree",
+      images: [
+        
+      ]
+    }
+  ]
 }
