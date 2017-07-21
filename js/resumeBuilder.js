@@ -1,28 +1,28 @@
 var bio = {
-  name: "Alex Gross",
-  role: "Front-End Developer",
-  contacts: {
-    mobile: "123456789",
-    email: "gross.alex@me.com",
-    github: "alexandergross",
-    twitter: "@_alexgross",
-    location: "Wels | Austria"
+  "name": "Alex Gross",
+  "role": "Front-End Developer",
+  "contacts": {
+    "mobile": "123456789",
+    "email": "gross.alex@me.com",
+    "github": "alexandergross",
+    "twitter": "@_alexgross",
+    "location": "Wels | Austria"
   },
-  biopic: "images/me.jpg",
-  welcomeMessage: "Welcome to my Udacity Resume",
-  skills: [
+  "biopic": "images/me.jpg",
+  "welcomeMessage": "Welcome to my Udacity Resume",
+  "skills": [
     "JavaScript", "CSS", "HTML", "Gulp", "Grunt"
   ]
 };
 
 var work = {
-  jobs: [
+  "jobs": [
     {
-      employer: "E-CONOMIX GmbH",
-      title: "Front-End Developer",
-      location: "Wels | Austria",
-      dates: "2016 - ",
-      description: ""
+      "employer": "E-CONOMIX GmbH",
+      "title": "Front-End Developer",
+      "location": "Wels | Austria",
+      "dates": "2016 - ",
+      "description": ""
     }
   ]
 };
@@ -79,8 +79,24 @@ var pojects = {
       dates: "2017",
       description: "A Portfolio Project for the Udacity Nanodegree",
       images: [
-        
+
       ]
     }
   ]
+}
+
+var formatedHTMLheaderName = HTMLheaderName.replace("%data%", bio.name);
+$("#header").append(formatedHTMLheaderName);
+
+if(bio.skills.length > 0) {
+  $("#header").append(HTMLskillsStart);
+
+  for(i = 0; i < bio.skills.length; i++) {
+    var formatedHTMLskills = HTMLskills.replace("%data%", bio.skills[i]);
+    $("#skills").append(formatedHTMLskills);
+  }
+} else {
+  $("#header").append(HTMLskillsStart);
+  var formatedHTMLskills = HTMLskills.replace("%data%", "There are no skills defined");
+  $("#skills").append(formatedHTMLskills);
 }
