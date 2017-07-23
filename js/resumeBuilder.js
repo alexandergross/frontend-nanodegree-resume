@@ -1,3 +1,7 @@
+/* ================================
+Bio
+================================== */
+
 var bio = {
   "name": "Alex Gross",
   "role": "Front-End Developer",
@@ -6,7 +10,7 @@ var bio = {
     "email": "gross.alex@me.com",
     "github": "alexandergross",
     "twitter": "@_alexgross",
-    "location": "Wels | Austria"
+    "location": "Wels"
   },
   "biopic": "images/me.jpg",
   "welcomeMessage": "Welcome to my Udacity Resume",
@@ -15,17 +19,52 @@ var bio = {
   ]
 };
 
+/* ================================
+Work
+================================== */
+
 var work = {
   "jobs": [
     {
       "employer": "E-CONOMIX GmbH",
       "title": "Front-End Developer",
-      "location": "Wels | Austria",
+      "location": "Wels",
       "dates": "2016 - ",
-      "description": ""
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+          "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque " +
+          "penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
+          "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. "
     }
   ]
 };
+
+function displayWork() {
+  for (var job in work.jobs) {
+    $("#workExperience").append(HTMLworkStart);
+
+    var formatedHTMLworkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var formatedHTMLworkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+    var formatedEmployerTitle = formatedHTMLworkEmployer + formatedHTMLworkTitle;
+    var formatedHTMLworkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+    var formatedHTMLworkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+    var formatedHTMLworkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+    var formatedHTMLwork = [
+      formatedEmployerTitle,
+      formatedHTMLworkDates,
+      formatedHTMLworkLocation,
+      formatedHTMLworkDescription
+    ];
+
+    for(var i = 0; i < formatedHTMLwork.length; i++) {
+      $(".work-entry:last").append(formatedHTMLwork[i]);
+    }
+  }
+}
+
+/* ================================
+Education
+================================== */
 
 var education = {
   "schools": [
@@ -72,22 +111,65 @@ var education = {
   ]
 };
 
-var pojects = {
-  projects: [
+/* ================================
+Projects
+================================== */
+
+var projects = {
+  "projects": [
     {
-      title: "Portfolio",
-      dates: "2017",
-      description: "A Portfolio Project for the Udacity Nanodegree",
-      images: [
+      "title": "Portfolio",
+      "dates": "2017",
+      "description": "A Portfolio Project for the Udacity Nanodegree",
+      "images": [
+        "file:///Users/alexgross/Sites/udacity/practice/frontend-nanodegree-resume/images/portfolio-img-1.jpg",
+        "file:///Users/alexgross/Sites/udacity/practice/frontend-nanodegree-resume/images/portfolio-img-2.jpg"
+      ]
+    },
+    {
+      "title": "Fronius",
+      "dates": "2017",
+      "description": "A clickdummy for Fronius",
+      "images": [
 
       ]
     }
   ]
 }
 
+projects.display = function() {
+
+  for (var i = 0; i < projects.projects.length; i++) {
+    console.log("projectFirstLoop");
+    $("#projects").append(HTMLprojectStart);
+
+    var formatedHTMLProject = [
+      HTMLprojectTitle.replace("%data%", projects.projects[i].title),
+      HTMLprojectDates.replace("%data%", projects.projects[i].dates),
+      HTMLprojectDescription.replace("%data%", projects.projects[i].description),
+    ];
+
+    for(var j = 0; j < formatedHTMLProject.length; j++) {
+      $(".project-entry:last").append(formatedHTMLProject[j]);
+    }
+
+    if(projects.projects[i].images.length > 0) {
+      for(var k = 0; k < projects.projects[i].images.length; k++) {
+        var formatedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[k]);
+        $(".project-entry:last").append(formatedImage);
+      }
+    }
+  }
+}
+
+/* ================================
+Header
+================================== */
+
 var formatedHTMLheaderName = HTMLheaderName.replace("%data%", bio.name);
 $("#header").append(formatedHTMLheaderName);
 
+//skills
 if(bio.skills.length > 0) {
   $("#header").append(HTMLskillsStart);
 
@@ -100,3 +182,42 @@ if(bio.skills.length > 0) {
   var formatedHTMLskills = HTMLskills.replace("%data%", "There are no skills defined");
   $("#skills").append(formatedHTMLskills);
 }
+
+/* ================================
+X,Y Click Coordinates
+================================== */
+
+displayWork();
+projects.display();
+
+$(document).click(function(loc) {
+
+  var x = loc.pageX;
+  var y = loc.pageY;
+
+  logClicks(x, y);
+});
+
+/* ================================
+Internationalize Button
+================================== */
+
+$("#main").append(internationalizeButton);
+
+function inName() {
+  var name = bio.name;
+  var firstSecondName = name.trim().split(" ");
+  var firstName = firstSecondName[0].slice(0, 1).toUpperCase() +
+    firstSecondName[0].slice(1).toLowerCase();
+  var secondName = firstSecondName[1].toUpperCase();
+  var intName = firstName + " " + secondName;
+
+  return intName;
+
+}
+
+/* ================================
+Map
+================================== */
+
+$("#mapDiv").append(googleMap);
