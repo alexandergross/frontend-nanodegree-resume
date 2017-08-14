@@ -12,12 +12,49 @@ var bio = {
     "twitter": "@_alexgross",
     "location": "Wels"
   },
-  "biopic": "images/me.jpg",
+  "biopic": "./../images/me.jpg",
   "welcomeMessage": "Welcome to my Udacity Resume",
   "skills": [
     "JavaScript", "CSS", "HTML", "Gulp", "Grunt"
   ]
 };
+
+/* ================================
+Header
+================================== */
+
+var formatedHTMLbioPic = HTMLbioPic.replace("%data%", bio.biopic);
+var formatedHTMLwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+var formatedHTMLheaderName = HTMLheaderName.replace("%data%", bio.name);
+var formatedHTMLheaderRole = HTMLheaderRole.replace("%data%", bio.role);
+var formatedHTMLmobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+var formatedHTMLemail = HTMLemail.replace("%data%", bio.contacts.email);
+var formatedHTMLtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+var formatedHTMLgithub = HTMLgithub.replace("%data%", bio.contacts.github);
+var formatedHTMLlocation = HTMLlocation.replace("%data%", bio.contacts.location);
+$("#header").append(formatedHTMLbioPic);
+$("#header").append(formatedHTMLheaderName);
+$("#header").append(formatedHTMLheaderRole);
+$("#header").append(formatedHTMLwelcomeMsg);
+$("#topContacts").append(formatedHTMLmobile);
+$("#topContacts").append(formatedHTMLemail);
+$("#topContacts").append(formatedHTMLtwitter);
+$("#topContacts").append(formatedHTMLgithub);
+$("#topContacts").append(formatedHTMLlocation);
+
+//skills
+if(bio.skills.length > 0) {
+  $("#header").append(HTMLskillsStart);
+
+  for(i = 0; i < bio.skills.length; i++) {
+    var formatedHTMLskills = HTMLskills.replace("%data%", bio.skills[i]);
+    $("#skills").append(formatedHTMLskills);
+  }
+} else {
+  $("#header").append(HTMLskillsStart);
+  var formatedHTMLskills = HTMLskills.replace("%data%", "There are no skills defined");
+  $("#skills").append(formatedHTMLskills);
+}
 
 /* ================================
 Work
@@ -30,6 +67,56 @@ var work = {
       "title": "Front-End Developer",
       "location": "Wels",
       "dates": "2016 - ",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+          "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque " +
+          "penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
+          "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. "
+    },
+    {
+      "employer": "Grosspack KG",
+      "title": "Mediadesigner & Webdeveloper",
+      "location": "Sipbachzell",
+      "dates": "2015 - 2016",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+          "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque " +
+          "penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
+          "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. "
+    },
+    {
+      "employer": "Fidelio GmbH",
+      "title": "Webdeveloper",
+      "location": "Linz",
+      "dates": "2014 - 2015",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+          "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque " +
+          "penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
+          "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. "
+    },
+    {
+      "employer": "Grosspack KG",
+      "title": "Mediadesigner",
+      "location": "Sipbachzell",
+      "dates": "2007 - 2009",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+          "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque " +
+          "penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
+          "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. "
+    },
+    {
+      "employer": "Austria Red Cross",
+      "title": "Paramedic",
+      "location": "Grünburg",
+      "dates": "2007 - 2008",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+          "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque " +
+          "penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
+          "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. "
+    },
+    {
+      "employer": "EM Marketing & Design",
+      "title": "Mediadesigner",
+      "location": "St. Valentin",
+      "dates": "2004 - 2005",
       "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
           "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque " +
           "penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
@@ -118,20 +205,21 @@ Projects
 var projects = {
   "projects": [
     {
-      "title": "Portfolio",
+      "title": "Resume Site",
       "dates": "2017",
-      "description": "A Portfolio Project for the Udacity Nanodegree",
+      "description": "A Resume Site for the Udacity Nanodegree",
       "images": [
-        "file:///Users/alexgross/Sites/udacity/practice/frontend-nanodegree-resume/images/portfolio-img-1.jpg",
-        "file:///Users/alexgross/Sites/udacity/practice/frontend-nanodegree-resume/images/portfolio-img-2.jpg"
+        "./../images/portfolio-img-1.jpg",
+        "./../images/portfolio-img-2.jpg"
       ]
     },
     {
-      "title": "Fronius",
+      "title": "Portfolio Site",
       "dates": "2017",
-      "description": "A clickdummy for Fronius",
+      "description": "A Portfolio Project for the Udacity Nanodegree",
       "images": [
-
+        "./../images/portfolio-img-1.jpg",
+        "./../images/portfolio-img-2.jpg"
       ]
     }
   ]
@@ -140,7 +228,6 @@ var projects = {
 projects.display = function() {
 
   for (var i = 0; i < projects.projects.length; i++) {
-    console.log("projectFirstLoop");
     $("#projects").append(HTMLprojectStart);
 
     var formatedHTMLProject = [
@@ -163,32 +250,15 @@ projects.display = function() {
 }
 
 /* ================================
-Header
-================================== */
-
-var formatedHTMLheaderName = HTMLheaderName.replace("%data%", bio.name);
-$("#header").append(formatedHTMLheaderName);
-
-//skills
-if(bio.skills.length > 0) {
-  $("#header").append(HTMLskillsStart);
-
-  for(i = 0; i < bio.skills.length; i++) {
-    var formatedHTMLskills = HTMLskills.replace("%data%", bio.skills[i]);
-    $("#skills").append(formatedHTMLskills);
-  }
-} else {
-  $("#header").append(HTMLskillsStart);
-  var formatedHTMLskills = HTMLskills.replace("%data%", "There are no skills defined");
-  $("#skills").append(formatedHTMLskills);
-}
-
-/* ================================
-X,Y Click Coordinates
+Display Functions
 ================================== */
 
 displayWork();
 projects.display();
+
+/* ================================
+X,Y Click Coordinates
+================================== */
 
 $(document).click(function(loc) {
 
