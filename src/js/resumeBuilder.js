@@ -12,7 +12,7 @@ var bio = {
     "twitter": "@_alexgross",
     "location": "Wels"
   },
-  "biopic": "./../images/me.jpg",
+  "biopic": "./dist/images/me.jpg",
   "welcomeMessage": "Welcome to my Udacity Resume",
   "skills": [
     "JavaScript", "CSS", "HTML", "Gulp", "Grunt"
@@ -209,8 +209,8 @@ var projects = {
       "dates": "2017",
       "description": "A Resume Site for the Udacity Nanodegree",
       "images": [
-        "./../images/portfolio-img-1.jpg",
-        "./../images/portfolio-img-2.jpg"
+        "./dist/images/portfolio-img-1.jpg",
+        "./dist/images/portfolio-img-2.jpg"
       ]
     },
     {
@@ -218,8 +218,8 @@ var projects = {
       "dates": "2017",
       "description": "A Portfolio Project for the Udacity Nanodegree",
       "images": [
-        "./../images/portfolio-img-1.jpg",
-        "./../images/portfolio-img-2.jpg"
+        "./dist/images/portfolio-img-1.jpg",
+        "./dist/images/portfolio-img-2.jpg"
       ]
     }
   ]
